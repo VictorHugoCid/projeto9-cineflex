@@ -20,16 +20,10 @@ export default function App() {
         < BrowserRouter >
             <Header />
             <Routes>
-            {/* <Route path='/' element={<Home />} /> */}
-
-            {/* <Route path='/' element={ <Film/>} /> */}
-            
-            {/* <Route path='/' element={ <Seats/>} /> */}
-
-            <Route path='/' element={ <Success/>} />        
-                
-
-
+            <Route path='/' element={<Home />} />
+            <Route path='/film' element={ <Film/>} />
+            <Route path='/seats' element={ <Seats/>} />
+            <Route path='/success' element={ <Success/>} />        
             </Routes>
 
         </BrowserRouter >

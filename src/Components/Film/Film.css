@@ -24,11 +24,11 @@
   margin-bottom: 15px;
 }
 
-.time {
+.sections {
   display: flex;
 }
 
-.time li {
+.section  {
   width: 83px;
   height: 43px;
   background: #e8833a;

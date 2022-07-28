@@ -8,7 +8,7 @@ export default function Footer(){
     return(
         <div className="footer">
             <Card/>
-            <p>Nome do filme XXXXXXXXXXX XXXXXXXX XXXXXXX XXXXXXX XXXX XXXXXXXXXX XXXXXXXX</p>
+            <p>Nome do filme XXXXXXXX</p>
         </div>
     )
 }

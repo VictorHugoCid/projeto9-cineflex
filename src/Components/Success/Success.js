@@ -1,9 +1,6 @@
 import './Success.css'
 
 export default function Success() {
-
-
-
     return (
 
         <>
@@ -33,7 +30,7 @@ export default function Success() {
                 </li>
             </ul>
 
-            <div className='button'>
+            <div className='buttonSuccess'>
                 Voltar para Home
             </div>
 

@@ -60,7 +60,7 @@ export default function Seats() {
                     <input type="text" placeholder='Digite seu CPF...' />
                 </div>
 
-                <div className='button'>
+                <div className='buttonSeats'>
                     Resevar assento(s)
                 </div>
             </div>
