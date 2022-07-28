@@ -1,3 +1,9 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .texto {
   width: 100%;
   height: 110px;
@@ -10,8 +16,94 @@
   align-items: center;
 }
 
-.seats{
-    width: 100%;
-    padding: 0px 24px;
+.seats {
+  width: 400px;
+  max-height: 200px;
+  padding: 0px 24px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
+.seat {
+  width: 24px;
+  height: 24px;
+
+  background: #c3cfd9;
+  border: 1px solid #808f9d;
+  border-radius: 12px;
+
+  font-size: 11px;
+  color: black;
+}
+
+.subtitle {
+  width: 400px;
+  display: flex;
+  justify-content: space-evenly;
+  
+}
+
+.subtitle div{
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  margin-bottom: 50px;
+}
+
+.subtitle p{
+  font-size: 13px;
+  margin-left: 0px;
+}
+
+.subtitle li{
+  margin-right: 0px;
+}
+
+.selected {
+  background: #8dd7cf;
+}
+
+.available {
+  background: #c3cfd9;
+}
+
+.unAvailable {
+  background: #fbe192;
+}
+
+.inputs input {
+  width: 400px;
+  height: 51px;
+
+  font-size: 18px;
+}
+/*  Atentar para diferença de ambos */
+.inputs {
+  margin-bottom: 30px;
+}
+
+.inputs p{
+  margin-bottom: 5px;
+  margin-left: 0px;
+  font-size: 18px;
+}
+
+.button {
+  width: 225px;
+  height: 42px;
+  margin-top: 50px;
+  background: #e8833a;
+  border-radius: 3px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  color: #ffffff;
+}

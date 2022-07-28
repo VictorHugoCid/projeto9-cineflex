@@ -19,7 +19,7 @@
 
     margin-left: 10px;
 }
-h1 {
+.day h1 {
   font-size: 20px;
   margin-bottom: 15px;
 }
@@ -28,7 +28,7 @@ h1 {
   display: flex;
 }
 
-li {
+.time li {
   width: 83px;
   height: 43px;
   background: #e8833a;
@@ -44,6 +44,4 @@ li {
 
   font-size: 18px;
   color: #ffffff;
-
-  
 }
