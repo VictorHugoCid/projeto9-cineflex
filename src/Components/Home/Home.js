@@ -14,9 +14,9 @@ export default function Home(){
         const promise = axios.get('https://mock-api.driven.com.br/api/v5/cineflex/movies')
     
         promise.then((resposta) => {
-            /* console.log(resposta.data)  */
+            console.log(resposta.data)
             setArray(resposta.data)
-            console.log(array)
+            /* console.log(array) */
 
         })
     },[rere])
@@ -24,7 +24,7 @@ export default function Home(){
 
     return (
         <div className="home"> 
-        <div className='texto' onClick={()=> setRere(!rere)}>Selecione o filme</div>
+        <div className='texto'>Selecione o filme</div>
             {/* VAI ROLAR UM MAP */}
 
             {array.map(value => {
