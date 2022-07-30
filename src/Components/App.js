@@ -6,8 +6,7 @@ import { BrowserRouter,Routes,Route } from "react-router-dom";
 import React from "react";
 import Home from "./Home/Home";
 import Header from "./Header/Header";
-import Footer from './Footer/Footer'
-import Film from './Film/Film'
+import Movie from './Movie/Movie'
 import Seats from './Seats/Seats'
 import Success from './Success/Success';
 
@@ -21,9 +20,9 @@ export default function App() {
             <Header />
             <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/film' element={ <Film/>} />
-            <Route path='/seats' element={ <Seats/>} />
-            <Route path='/success' element={ <Success/>} />        
+            <Route path='/filme/:filmeId' element={ <Movie/>} />
+            <Route path='/sessao/:sessaoId' element={ <Seats/>} />
+            <Route path='/successo' element={ <Success/>} />        
             </Routes>
 
         </BrowserRouter >
@@ -31,10 +30,3 @@ export default function App() {
 
     )
 }
-
-{/* <>
-            <Header/>
-            
-            <Home/>
-        </>
-         */}

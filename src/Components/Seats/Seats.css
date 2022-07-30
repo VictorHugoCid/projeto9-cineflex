@@ -7,20 +7,25 @@
 
 .texto {
   width: 100%;
-  height: 110px;
-  margin-top: 67px;
+  height: 90px;
+  background-color: #ffffff;
 
   font-size: 24px;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 
 .seats {
   width: 400px;
   max-height: 200px;
   padding: 0px 24px;
+  margin-top: 200px;
 
   display: flex;
   flex-wrap: wrap;
@@ -43,6 +48,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  cursor: pointer;
+
 }
 
 .subtitle {
@@ -79,14 +87,17 @@
 
 .selected {
   background: #8dd7cf;
+  
 }
 
 .available {
   background: #c3cfd9;
+  
 }
 
 .unAvailable {
   background: #fbe192;
+  cursor:default;
 }
 
 .inputs input {

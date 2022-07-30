@@ -1,6 +1,6 @@
 .box {
-  width: 145px;
-  height: 210px;
+  max-width: 145px;
+  max-height: 210px;
   padding: 8px;
   margin-bottom: 10px;
 
