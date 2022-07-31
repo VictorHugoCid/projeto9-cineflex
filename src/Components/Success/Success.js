@@ -1,43 +1,44 @@
+import { Link, useNavigate } from 'react-router-dom'
 import './Success.css'
 
-export default function Success() {
+export default function Success({userData, title, info, seatSuccess}) {
+
+    const navigate = useNavigate()
+    /* console.log('Sucesso',userData.ids) */
+    
     return (
 
         <>
             <div className='texto'>Pedido feito com sucesso!</div>
             
-            <ul>
+            <ul className='succesMain'>
                 <li className='container'>
                     <h1>Filme e sessão</h1>
                     <div>
-                        <p>Enola Holmes</p>
-                        <p>24/06/2021 15:00</p>
+                        <p>{title}</p>
+                        <p>{info.day.date} - {info.name}</p>
                     </div>
                 </li>
                 <li className='container'>
                     <h1>Ingressos</h1>
                     <div>
-                        <p>Assento 15</p>
-                        <p>Assento 16</p>
+                        {seatSuccess.map((value) => 
+                            <p>Assento {value}</p>
+                        )}
                     </div>
                 </li>
                 <li className='container'>
                     <h1>Comprador</h1>
                     <div>
-                        <p>Nome: João da Silva Sauro</p>
-                        <p>CPF: 123.456.789-10</p>
+                        <p>Nome: {userData.name}</p>
+                        <p>CPF: {userData.cpf}</p>
                     </div>
                 </li>
             </ul>
 
-            <div className='buttonSuccess'>
+            <button className='buttonSuccess' onClick={() => (navigate("/"))}>
                 Voltar para Home
-            </div>
-
-
-
-
-
+            </button>
         </>
 
     )

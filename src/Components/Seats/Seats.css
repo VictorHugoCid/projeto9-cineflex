@@ -101,7 +101,7 @@
 }
 
 .inputs input {
-  width: 400px;
+  width: 80vw;
   height: 51px;
 
   font-size: 18px;
@@ -109,8 +109,17 @@
 /*  Atentar para diferença de ambos */
 .inputs {
   margin-bottom: 30px;
+
+  display: flex;
+  flex-direction: column;
 }
 
+form{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .inputs p{
   margin-bottom: 5px;
   margin-left: 0px;
@@ -130,4 +139,6 @@
 
   font-size: 18px;
   color: #ffffff;
+
+  cursor: pointer;
 }
