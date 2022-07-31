@@ -5,19 +5,16 @@ import Footer from '../Footer/Footer'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export default function Movie(
-    {session, 
-    setSession, 
-    footerImage, 
-    setFooterImage, 
-    footerTitle, 
-    setFooterTitle 
-    }) {
-        
+export default function Movie({}) {
+
+    const [session, setSession] = useState([])
+    const [footerImage, setFooterImage] = useState({})
+    const [footerTitle, setFooterTitle] = useState('')
+
     const movieId = useParams()
 
     useEffect(() => {
-        const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${movieId.filmeId}/showtimes`)
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${movieId.idFilme}/showtimes`)
 
         promise.then((resposta) => {
             setSession(resposta.data.days)
@@ -55,7 +52,7 @@ export default function Movie(
                         })}
                     </div>
 
-                    <Footer image={footerImage} title={footerTitle} /> 
+                    <Footer image={footerImage} title={footerTitle} />
                 </>
             )}
         </>

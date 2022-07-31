@@ -1,10 +1,18 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './Success.css'
 
-export default function Success({userData, title, info, seatSuccess}) {
+export default function Success({userInfo, seatSuccess, userData, name, cpf}) {
 
     const navigate = useNavigate()
-    /* console.log('Sucesso',userData.ids) */
+
+
+    function cpf(value){
+        value=value.replace(/\D/g,"")                    
+        value=value.replace(/(\d{3})(\d)/,"$1.$2")       
+        value=value.replace(/(\d{3})(\d)/,"$1.$2")       
+        value=value.replace(/(\d{3})(\d{1,2})$/,"$1-$2") 
+        return value
+    }
     
     return (
 
@@ -15,23 +23,23 @@ export default function Success({userData, title, info, seatSuccess}) {
                 <li className='container'>
                     <h1>Filme e sessão</h1>
                     <div>
-                        <p>{title}</p>
-                        <p>{info.day.date} - {info.name}</p>
+                        <p>{userInfo.movie.title}</p>
+                        <p>{userInfo.day.date} - {userInfo.name}</p>
                     </div>
                 </li>
                 <li className='container'>
                     <h1>Ingressos</h1>
                     <div>
-                        {seatSuccess.map((value) => 
-                            <p>Assento {value}</p>
+                        {seatSuccess.map((value, index) => 
+                            <p /* key={index} */>Assento {value}</p>
                         )}
                     </div>
                 </li>
                 <li className='container'>
                     <h1>Comprador</h1>
                     <div>
-                        <p>Nome: {userData.name}</p>
-                        <p>CPF: {userData.cpf}</p>
+                        <p>Nome: {name}</p>
+                        <p>CPF: {cpf(userData.cpf)}</p>
                     </div>
                 </li>
             </ul>

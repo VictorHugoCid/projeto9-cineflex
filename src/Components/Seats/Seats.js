@@ -6,72 +6,64 @@ import { useEffect, useState } from 'react'
 import Footer from '../Footer/Footer'
 import { useNavigate, useParams } from 'react-router-dom'
 
-export default function Seats(
-    {seats,
-    setSeats,
-    footerImage,
-    setFooterImage,
-    footerTitle,
-    setFooterTitle,
-    weekday,
-    setWeekday,
-    showtime,
-    setShowtime,
-    arraySelection,
-    setArraySelection,
-    setName,
-    ids,
-    setIds,
-    setCpf,
-    userData,
-    setInfo,
-    seatSuccess,
-    setSeatSuccess
-    })
-    {
+export default function Seats({ setUserInfo, userInfo, seatSuccess, setSeatSuccess, userData, ids, setIds, setName, setCpf }) {
+
+    const [seats, setSeats] = useState([])
+
+    const [weekday, setWeekday] = useState('')
+    const [showtime, setShowtime] = useState('')
+    const [footerImage, setFooterImage] = useState({})
+    const [footerTitle, setFooterTitle] = useState('')
+
+    const [arraySelection, setArraySelection] = useState([]);
 
     const sessionId = useParams()
     const navigate = useNavigate()
 
     function handleForm(e) {
         e.preventDefault()
-        if(ids.length === 0){
+        if (ids.length === 0) {
             alert('Vai sentar no chão?')
+            return
         }
+        cpfVerify()
 
-        console.log(arraySelection)
-        console.log(userData)
-        navigate('/sucesso') 
-
-         //axios.post('URL', body)
-       /*  const promise = axios.post('https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many', userData);
+        const promise = axios.post('https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many', userData);
         promise
             .then(resposta => {
-                console.log(resposta.data)
-                
                 console.log(userData)
-                
-        }) */
-        /* navigate('/sucesso') */
+                console.log(resposta.data)
+                navigate('/sucesso')
+
+
+            })
 
     }
 
+    function cpfVerify() {
+        if (userData.cpf.length !== 11) {
+            alert(`${userData.cpf.length}, Seu CPF precisa ter 11 caracteres`)
+            return
+        }
+       /*  navigate('/sucesso') */
+    }
+
     useEffect(() => {
-        const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessionId.sessaoId}/seats`)
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessionId.idSessao}/seats`)
 
         promise.then((resposta) => {
-            setInfo(resposta.data)
+            setUserInfo(resposta.data)
             setSeats(resposta.data.seats)
             setFooterImage(resposta.data.movie.posterURL)
             setFooterTitle(resposta.data.movie.title)
             setWeekday(resposta.data.day.weekday)
-            setShowtime(resposta.data.name) 
+            setShowtime(resposta.data.name)
         })
     }, [sessionId])
 
     return (
         <>
-            {(seats.length > 0) ? ( 
+            {(seats.length > 0) ? (
                 <>
                     <div className='main'>
                         <p className='texto' > Selecione o(s) assentos(s)</p>
@@ -138,46 +130,46 @@ export default function Seats(
 
 
 function Seat(
-    { seat,
-    temVaga,
-    seatId, 
-    arraySelection, 
-    setArraySelection, 
-    setIds, 
-    seatSuccess, 
-    setSeatSuccess,
-    seatName 
-    }) 
     {
+        seat,
+        temVaga,
+        seatId,
+        arraySelection,
+        setArraySelection,
+        setIds,
+        seatSuccess,
+        setSeatSuccess,
+        seatName
+    }) {
 
     const [selected, setSelected] = useState(false)
 
     function selectSeat() {
-        
+
         setSelected(!selected)
-        if(!arraySelection.includes(seatId)){    
+        if (!arraySelection.includes(seatId)) {
             setArraySelection([...arraySelection, seatId])
             setSeatSuccess([...seatSuccess, seatName])
-        }else{
+        } else {
             const arrayAuxId = [...arraySelection]
             const arrayAuxName = [...arraySelection]
 
             for (let i = 0; i < arraySelection.length; i++) {
-                if(arraySelection[i] === seatId){
-                    arrayAuxId.splice(i,1)
-                    arrayAuxName.splice(i,1)
+                if (arraySelection[i] === seatId) {
+                    arrayAuxId.splice(i, 1)
+                    arrayAuxName.splice(i, 1)
 
                     setArraySelection(arrayAuxId)
                     setSeatSuccess(arrayAuxName)
-                }   
+                }
             }
         }
     }
-    
+
     let color = ''
-    if(selected === false){
+    if (selected === false) {
         color = ''
-    }else{
+    } else {
         color = 'selected'
     }
     setIds(arraySelection)

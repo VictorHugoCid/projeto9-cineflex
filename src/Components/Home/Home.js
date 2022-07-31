@@ -2,11 +2,11 @@ import './Home.css'
 
 import Card from '../Card/Card'
 import axios from "axios";
-import { useEffect} from "react";
+import { useState, useEffect} from "react";
 
-export default function Home({arrayHome, setArrayHome}) {
+export default function Home({}) {
     
-
+    const [arrayHome, setArrayHome] = useState([])
     useEffect(() => {
         const promise = axios.get('https://mock-api.driven.com.br/api/v7/cineflex/movies')
 
@@ -18,7 +18,6 @@ export default function Home({arrayHome, setArrayHome}) {
     return (
         <div className="home">
             <div className='texto'>Selecione o filme</div>
-            {/* VAI ROLAR UM MAP */}
             <div className='boxContainer'></div>
             {arrayHome.map(value => {
                 return (
