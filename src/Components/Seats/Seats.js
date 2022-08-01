@@ -26,7 +26,11 @@ export default function Seats({ setUserInfo, userInfo, seatSuccess, setSeatSucce
             alert('Vai sentar no chão?')
             return
         }
-        cpfVerify()
+        
+        if (userData.cpf.length !== 11) {
+            alert(`${userData.cpf.length}, Seu CPF precisa ter 11 caracteres`)
+            return
+        }
 
         const promise = axios.post('https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many', userData);
         promise
@@ -34,19 +38,11 @@ export default function Seats({ setUserInfo, userInfo, seatSuccess, setSeatSucce
                 console.log(userData)
                 console.log(resposta.data)
                 navigate('/sucesso')
-
-
             })
 
     }
 
-    function cpfVerify() {
-        if (userData.cpf.length !== 11) {
-            alert(`${userData.cpf.length}, Seu CPF precisa ter 11 caracteres`)
-            return
-        }
-       /*  navigate('/sucesso') */
-    }
+   
 
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessionId.idSessao}/seats`)
