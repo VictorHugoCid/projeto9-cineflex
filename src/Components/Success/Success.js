@@ -31,7 +31,7 @@ export default function Success({userInfo, seatSuccess, userData, name, cpf}) {
                     <h1>Ingressos</h1>
                     <div>
                         {seatSuccess.map((value, index) => 
-                            <p /* key={index} */>Assento {value}</p>
+                            <p key={index}>Assento {value}</p>
                         )}
                     </div>
                 </li>

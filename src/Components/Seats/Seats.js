@@ -17,6 +17,10 @@ export default function Seats({ setUserInfo, userInfo, seatSuccess, setSeatSucce
 
     const [arraySelection, setArraySelection] = useState([]);
 
+    /* Auxiliares para enviar pro Success */
+    const [userInfoAux, setUserInfoAux] = useState()
+    const [seatSuccessAux, setSeatSuccessAux] = useState([])
+
     const sessionId = useParams()
     const navigate = useNavigate()
 
@@ -32,6 +36,9 @@ export default function Seats({ setUserInfo, userInfo, seatSuccess, setSeatSucce
             return
         }
 
+        /* Setando auxiliares */
+        setUserInfo(userInfoAux)
+        setSeatSuccess(seatSuccessAux)
         const promise = axios.post('https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many', userData);
         promise
             .then(resposta => {
@@ -48,7 +55,7 @@ export default function Seats({ setUserInfo, userInfo, seatSuccess, setSeatSucce
         const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessionId.idSessao}/seats`)
 
         promise.then((resposta) => {
-            setUserInfo(resposta.data)
+            setUserInfoAux(resposta.data)
             setSeats(resposta.data.seats)
             setFooterImage(resposta.data.movie.posterURL)
             setFooterTitle(resposta.data.movie.title)
@@ -74,8 +81,8 @@ export default function Seats({ setUserInfo, userInfo, seatSuccess, setSeatSucce
                                     arraySelection={arraySelection}
                                     setIds={setIds}
                                     seatName={value.name}
-                                    seatSuccess={seatSuccess}
-                                    setSeatSuccess={setSeatSuccess}
+                                    seatSuccessAux={seatSuccessAux}
+                                    setSeatSuccessAux={setSeatSuccessAux}
                                 />
                             })}
                         </ul>
@@ -133,8 +140,8 @@ function Seat(
         arraySelection,
         setArraySelection,
         setIds,
-        seatSuccess,
-        setSeatSuccess,
+        seatSuccessAux,
+        setSeatSuccessAux,
         seatName
     }) {
 
@@ -145,10 +152,10 @@ function Seat(
         setSelected(!selected)
         if (!arraySelection.includes(seatId)) {
             setArraySelection([...arraySelection, seatId])
-            setSeatSuccess([...seatSuccess, seatName])
+            setSeatSuccessAux([...seatSuccessAux, seatName])
         } else {
             const arrayAuxId = [...arraySelection]
-            const arrayAuxName = [...arraySelection]
+            const arrayAuxName = [...setSeatSuccessAux]
 
             for (let i = 0; i < arraySelection.length; i++) {
                 if (arraySelection[i] === seatId) {
@@ -156,7 +163,7 @@ function Seat(
                     arrayAuxName.splice(i, 1)
 
                     setArraySelection(arrayAuxId)
-                    setSeatSuccess(arrayAuxName)
+                    setSeatSuccessAux(arrayAuxName)
                 }
             }
         }
