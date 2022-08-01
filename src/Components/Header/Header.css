@@ -16,4 +16,9 @@
     font-size: 34px;
     color: #E8833A;
     background-color: #C3CFD9;
+    
+}
+
+.header h1{
+    cursor: pointer;
 }
